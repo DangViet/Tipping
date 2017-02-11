@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="exQ-h1-QIh">
-                                <rect key="frame" x="195" y="205" width="109" height="21"/>
+                                <rect key="frame" x="124" y="205" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -62,8 +62,8 @@
                                     <action selector="calcTotal:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cl1-4j-0Ue"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="qtU-P8-NIX">
-                                <rect key="frame" x="195" y="81" width="109" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="qtU-P8-NIX">
+                                <rect key="frame" x="180" y="81" width="124" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -73,7 +73,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EdK-P3-BPV">
-                                <rect key="frame" x="195" y="123" width="109" height="21"/>
+                                <rect key="frame" x="124" y="123" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -94,6 +94,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blankView" destination="IrA-k8-Qhd" id="SsG-ZL-Bzx"/>
                         <outlet property="lblTip" destination="EdK-P3-BPV" id="tJP-vc-MEK"/>
                         <outlet property="lblTotal" destination="exQ-h1-QIh" id="zQe-dk-MvL"/>
                         <outlet property="segTipPercent" destination="em9-qn-BAl" id="oqu-V1-OCZ"/>

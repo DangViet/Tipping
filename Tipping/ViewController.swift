@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtBill: UITextField!
     @IBOutlet weak var lblTip: UILabel!
     @IBOutlet weak var lblTotal: UILabel!
+    @IBOutlet weak var blankView: UIView!
     
     @IBOutlet weak var segTipPercent: UISegmentedControl!
     
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         txtBill.becomeFirstResponder()
+        txtBill.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -69,9 +71,23 @@ class ViewController: UIViewController {
     
     @IBAction func calcTotal(_ sender: AnyObject?) {
         
+        UIView.animate(withDuration: 1, animations: {
+            self.blankView.alpha = 0
+            
+            
+        })
+            UIView.animate(withDuration: 0.5, animations: {
+                self.blankView.alpha = 1
+                
+        })
+        
+        
         let tipPercentages = [0.1, 0.18, 0.25]
         
         let bill = Double(txtBill.text!) ?? 0
+        
+        
+        
         let tip = bill * (tipPercentages[segTipPercent.selectedSegmentIndex])
         let total = tip + bill
     
@@ -86,7 +102,23 @@ class ViewController: UIViewController {
         lblTotal.text = localizedTotal
         
     }
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if(string == "." && textField.text?.range(of:".") != nil){
+            return false
+        }
+        
+        if(textField.text == "0"){
+            if(string != "."){
+                textField.text = "";
+            }
+            
+        }
+        guard let text = textField.text else { return true }
+        let newLength = text.characters.count + string.characters.count - range.length
+        return newLength <= 9 // Bool
+    }
+
 
 }
 
