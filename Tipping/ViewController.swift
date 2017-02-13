@@ -17,6 +17,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var segTipPercent: UISegmentedControl!
     
+    var themes = ["Light", "Dark"]
+    var pickViewColour = UIColor.black
+    var lowTip = 10
+    var medTip = 18
+    var highTip = 25
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,18 +46,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         
         let defaults = UserDefaults.standard
-        let defaultPercentIndex = defaults.integer(forKey: "percent")
-        segTipPercent.selectedSegmentIndex = defaultPercentIndex
+        
+        lowTip = defaults.integer(forKey: "LowTip")
+        print("Will apprear ", lowTip)
+        if(lowTip == 0){
+            lowTip = 10
+            defaults.set(lowTip, forKey: "LowTip")
+        }
+        segTipPercent.setTitle(String(lowTip) + "%", forSegmentAt: 0)
+        
+        medTip = defaults.integer(forKey: "MediumTip")
+        if(medTip == 0){
+            medTip = 18
+            defaults.set(medTip, forKey: "MediumTip")
+        }
+        segTipPercent.setTitle(String(medTip) + "%", forSegmentAt: 1)
+        
+        highTip = defaults.integer(forKey: "HighTip")
+        if(highTip == 0){
+            highTip = 25
+            defaults.set(highTip, forKey: "HighTip")
+        }
+        
+        defaults.synchronize()
+        
+        segTipPercent.setTitle(String(highTip) + "%", forSegmentAt: 2)
+        
+        
         calcTotal(nil)
+        
+        changeColor()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         
         UIView.animate(withDuration: 0.4, animations: {
             self.view.alpha = 0.5
@@ -71,6 +105,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func calcTotal(_ sender: AnyObject?) {
         
+        let defaults = UserDefaults.standard
+        
         UIView.animate(withDuration: 1, animations: {
             self.blankView.alpha = 0
             
@@ -80,15 +116,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.blankView.alpha = 1
                 
         })
-        
-        
-        let tipPercentages = [0.1, 0.18, 0.25]
+        var tipPercentage = 0.0
+        if(segTipPercent.selectedSegmentIndex == 0){
+            tipPercentage = defaults.double(forKey: "LowTip") / 100
+        } else if (segTipPercent.selectedSegmentIndex == 1){
+            tipPercentage = defaults.double(forKey: "MediumTip") / 100
+        } else {
+            tipPercentage = defaults.double(forKey: "HighTip") / 100
+        }
         
         let bill = Double(txtBill.text!) ?? 0
         
         
         
-        let tip = bill * (tipPercentages[segTipPercent.selectedSegmentIndex])
+        let tip = bill * (tipPercentage)
         let total = tip + bill
     
         let formatter = NumberFormatter()
@@ -117,6 +158,52 @@ class ViewController: UIViewController, UITextFieldDelegate {
         guard let text = textField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= 9 // Bool
+    }
+
+    func changeColor() {
+        let defaults = UserDefaults.standard
+        let themeSetting = defaults.integer(forKey: "theme")
+        if (themeSetting == 1) {
+            self.view.backgroundColor = UIColor.black;
+            
+            //Get all UIViews in self.view.subViews
+            for subview in self.view.subviews as [UIView]  {
+                //Check if the view is of UILabel class
+                if let labelView = subview as? UILabel {
+                    //Set the color to label
+                    labelView.textColor = UIColor.blue;
+                }
+                if let textView = subview as? UITextField{
+                    textView.textColor = UIColor.blue
+                }
+                if let pickerView = subview as? UIPickerView{
+                    pickerView.backgroundColor = UIColor.black
+                    
+                }
+            }
+            pickViewColour = UIColor.red
+            
+        } else {
+            self.view.backgroundColor = UIColor.white;
+            //Get all UIViews in self.view.subViews
+            for subview in self.view.subviews as [UIView]  {
+                //Check if the view is of UILabel class
+                if let labelView = subview as? UILabel {
+                    //Set the color to label
+                    labelView.textColor = UIColor.black;
+                }
+                if let textView = subview as? UITextField{
+                    textView.textColor = UIColor.black;
+                }
+                if let pickerView = subview as? UIPickerView{
+                    pickerView.backgroundColor = UIColor.white
+                    
+                }
+                
+                
+            }
+            pickViewColour = UIColor.black
+        }
     }
 
 

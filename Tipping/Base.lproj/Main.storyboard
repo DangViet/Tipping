@@ -62,11 +62,12 @@
                                     <action selector="calcTotal:" destination="BYZ-38-t0r" eventType="valueChanged" id="Cl1-4j-0Ue"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="qtU-P8-NIX">
-                                <rect key="frame" x="180" y="81" width="124" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="qtU-P8-NIX">
+                                <rect key="frame" x="186" y="81" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="calcTotal:" destination="BYZ-38-t0r" eventType="editingChanged" id="Bum-U5-ltD"/>
@@ -118,36 +119,117 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="hUF-Mm-pW6">
-                                <rect key="frame" x="84" y="89" width="220" height="29"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="ojB-Ab-OYQ">
+                                <rect key="frame" x="16" y="87" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="10%"/>
-                                    <segment title="18%"/>
-                                    <segment title="25%"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Default Percentage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HEZ-yE-x8T">
+                                        <rect key="frame" x="59" y="5" width="171" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10%" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="BAO-CT-DRi">
+                                <rect key="frame" x="165" y="126" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="onChangeDefaultTipPercent:" destination="AB5-UE-ccq" eventType="valueChanged" id="BWp-s2-Is8"/>
+                                    <action selector="onEditEndLowTip:" destination="AB5-UE-ccq" eventType="editingDidEnd" id="0AL-G6-4Vc"/>
                                 </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Default" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HkM-WD-f1k">
-                                <rect key="frame" x="16" y="93" width="55" height="21"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="18%" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="SR2-Q3-4nL">
+                                <rect key="frame" x="165" y="164" width="82" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="onEditEndMedTip:" destination="AB5-UE-ccq" eventType="editingDidEnd" id="AK6-mn-W5g"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="25%" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" id="Gsq-Pz-C0q">
+                                <rect key="frame" x="165" y="202" width="82" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="onEditEndHighTip:" destination="AB5-UE-ccq" eventType="editingDidEnd" id="bGg-Kk-VXQ"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" misplaced="YES" id="D0V-GO-V4B">
+                                <rect key="frame" x="16" y="239" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Theme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fuZ-6n-kGs">
+                                        <rect key="frame" x="68" y="5" width="152" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <pickerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" id="eJ3-1D-ipS">
+                                <rect key="frame" x="16" y="270" width="288" height="83"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="AB5-UE-ccq" id="5RB-Vi-CkL"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Low" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0zC-9j-HRJ">
+                                <rect key="frame" x="74" y="126" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Medium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0mx-X5-dhn">
+                                <rect key="frame" x="74" y="164" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="High" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t2c-ax-wNI">
+                                <rect key="frame" x="74" y="201" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="nVX-Ha-RZo" appends="YES" id="11P-3M-RbF"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="lpi-XM-bij"/>
                     <connections>
-                        <outlet property="segDefaultTipPercent" destination="hUF-Mm-pW6" id="9nZ-wL-aFF"/>
+                        <outlet property="pickTheme" destination="eJ3-1D-ipS" id="dsx-Z4-1pe"/>
+                        <outlet property="txtHighTip" destination="Gsq-Pz-C0q" id="CQm-Ji-yXw"/>
+                        <outlet property="txtLowTip" destination="BAO-CT-DRi" id="xkm-67-ClM"/>
+                        <outlet property="txtMediumTip" destination="SR2-Q3-4nL" id="BZX-ze-PYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49I-qR-8Dl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nVX-Ha-RZo">
+                    <connections>
+                        <action selector="onViewTap:" destination="AB5-UE-ccq" id="omd-qM-wra"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1141" y="117"/>
         </scene>
